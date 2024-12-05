@@ -1,0 +1,55 @@
+---
+whiskers:
+  version: 2.5.1
+  matrix:
+    - flavor
+    - accent
+  filename: "themes/{{ flavor.name }}/{{ flavor.colors[accent].name }}/catppuccin-{{ flavor.identifier }}-{{ accent }}.json"
+---
+{% if flavor.light %}
+  {% set backgroundColor = crust.sint32 %}
+  {% set barColor = surface0.sint32 %}
+  {% set keyBackgroundColor = base.sint32 %}
+  {% set keyShadowColor = surface0.sint32 %}
+{% else %}
+  {% set backgroundColor = mantle.sint32 %}
+  {% set barColor = base.sint32 %}
+  {% set keyBackgroundColor = surface0.sint32 %}
+  {% set keyShadowColor = crust.sint32 %}
+{% endif %}
+{% set keyboardColor = backgroundColor %}
+{% set keyTextColor = text.sint32 %}
+{% set altKeyBackgroundColor = barColor %}
+{% set altKeyTextColor = subtext0.sint32 %}
+{% set accentKeyBackgroundColor = flavor.colors[accent].sint32 %}
+{% set accentKeyTextColor = base.sint32 %}
+{% set keyPressHighlightColor = overlay2 | mod(opacity=0.7) | get(key='sint32') %}
+{% set popupBackgroundColor = altKeyBackgroundColor %}
+{% set popupTextColor = text.sint32 %}
+{% set spaceBarColor = surface1.sint32 %}
+{% set dividerColor = surface1.sint32 %}
+{% set clipboardEntryColor = keyBackgroundColor %}
+{
+  "version": "2.0",
+  "name": "catppuccin-{{ flavor.identifier }}-{{ accent }}",
+  "isDark": {{ flavor.dark }},
+  "backgroundColor": {{ backgroundColor }},
+  "barColor": {{ barColor }},
+  "keyboardColor": {{ keyboardColor }},
+  "keyBackgroundColor": {{ keyBackgroundColor }},
+  "keyTextColor": {{ keyTextColor }},
+  "altKeyBackgroundColor": {{ altKeyBackgroundColor }},
+  "altKeyTextColor": {{ altKeyTextColor }},
+  "accentKeyBackgroundColor": {{ accentKeyBackgroundColor }},
+  "accentKeyTextColor": {{ accentKeyTextColor }},
+  "keyPressHighlightColor": {{ keyPressHighlightColor }},
+  "keyShadowColor": {{ keyShadowColor }},
+  "popupBackgroundColor": {{ popupBackgroundColor }},
+  "popupTextColor": {{ popupTextColor }},
+  "spaceBarColor": {{ spaceBarColor }},
+  "dividerColor": {{ dividerColor }},
+  "clipboardEntryColor": {{ clipboardEntryColor }},
+  "genericActiveBackgroundColor": {{ flavor.colors[accent].sint32 }},
+  "genericActiveForegroundColor": {{ base.sint32 }},
+  "backgroundImage": null
+}
