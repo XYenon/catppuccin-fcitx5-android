@@ -19,8 +19,11 @@ whiskers:
 {% endif %}
 {% set keyboardColor = backgroundColor %}
 {% set keyTextColor = text.sint32 %}
+{% set candidateTextColor = keyTextColor %}
+{% set candidateLabelColor = keyTextColor %}
+{% set candidateCommentColor = subtext0.sint32 %}
 {% set altKeyBackgroundColor = barColor %}
-{% set altKeyTextColor = subtext0.sint32 %}
+{% set altKeyTextColor = candidateCommentColor %}
 {% set accentKeyBackgroundColor = flavor.colors[accent].sint32 %}
 {% set accentKeyTextColor = base.sint32 %}
 {% set keyPressHighlightColor = overlay2 | mod(opacity=0.7) | get(key='sint32') %}
@@ -30,7 +33,7 @@ whiskers:
 {% set dividerColor = surface1.sint32 %}
 {% set clipboardEntryColor = keyBackgroundColor %}
 {
-  "version": "2.0",
+  "version": "2.1",
   "name": "catppuccin-{{ flavor.identifier }}-{{ accent }}",
   "isDark": {{ flavor.dark }},
   "backgroundColor": {{ backgroundColor }},
@@ -38,6 +41,9 @@ whiskers:
   "keyboardColor": {{ keyboardColor }},
   "keyBackgroundColor": {{ keyBackgroundColor }},
   "keyTextColor": {{ keyTextColor }},
+  "candidateTextColor": {{ candidateTextColor }},
+  "candidateLabelColor": {{ candidateLabelColor }},
+  "candidateCommentColor": {{ candidateCommentColor }},
   "altKeyBackgroundColor": {{ altKeyBackgroundColor }},
   "altKeyTextColor": {{ altKeyTextColor }},
   "accentKeyBackgroundColor": {{ accentKeyBackgroundColor }},
